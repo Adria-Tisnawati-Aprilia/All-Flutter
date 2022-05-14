@@ -111,7 +111,7 @@ class _MyAppState extends State<MyApp> {
         home: Scaffold(
           appBar: AppBar(
             centerTitle: true,
-            title: Text("Counter Ilham"),
+            title: Text("Counter Apps"),
             actions: [
               IconButton(icon: Icon(Icons.refresh), onPressed: refresh),
             ],
