@@ -33,6 +33,8 @@ class _LoginPageState extends State<LoginPage> {
         final body = json.decode(response.body);
 
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Login berhasil"),));
+
+        authpage(body["token"]);
     } else {
       print("gagal");
     }
