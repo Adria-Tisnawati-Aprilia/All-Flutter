@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
+import 'package:http/http.dart'as http;
 class LoginPage extends StatefulWidget {
   const LoginPage({ Key? key }) : super(key: key);
 
@@ -17,8 +17,19 @@ class _LoginPageState extends State<LoginPage> {
   static Future init() async {
     localStorage = await SharedPreferences.getInstance();
   }
-    
-  
+    void login()async {
+        var response = await http.post(Uri.parse("http://localhost:8000/login"), body:({
+        "email": emailController, "password": pwdController
+        }));
+        if(response.statusCode==200) {
+            print("berhasil");
+        } else {
+            print("gagal");
+        }
+
+
+    }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -84,9 +95,9 @@ class _LoginPageState extends State<LoginPage> {
                 //   onPressed: ({print("object")}),
                 //   child: Text('Login'),
                 // ),
-    
+
                 Padding(
-                
+
                   padding: EdgeInsets.only(top: 50),
                 ),
                 if (localStorage != null)
