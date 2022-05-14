@@ -1,29 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
-  runApp(MyApp());
+class LoginPage extends StatefulWidget {
+  const LoginPage({ Key? key }) : super(key: key);
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
 }
 
 SharedPreferences? localStorage;
-
 TextEditingController emailController = new TextEditingController();
 TextEditingController pwdController = new TextEditingController();
+class _LoginPageState extends State<LoginPage> {
 
-class MyApp extends StatelessWidget {
+
   static Future init() async {
     localStorage = await SharedPreferences.getInstance();
   }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MyHome(),
-    );
-  }
-}
-
-class MyHome extends StatelessWidget {
+    
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,10 +79,10 @@ class MyHome extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.only(top: 50),
               ),
-              RaisedButton(
-                onPressed: save,
-                child: Text('Login'),
-              ),
+              // RaisedButton(
+              //   onPressed: ({print("object")}),
+              //   child: Text('Login'),
+              // ),
 
               Padding(
               
@@ -105,11 +100,9 @@ class MyHome extends StatelessWidget {
     );
   }
 }
+//     save() async {
+//   await LoginPage.init();
+//   localStorage!.setString('email', emailController.text.toString());
+//   localStorage!.setString('password', pwdController.text.toString());
 
-
-save() async {
-  await MyApp.init();
-  localStorage!.setString('email', emailController.text.toString());
-  localStorage!.setString('password', pwdController.text.toString());
-
-}
+// }
