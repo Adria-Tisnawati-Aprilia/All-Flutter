@@ -88,10 +88,10 @@ class _LoginPageState extends State<LoginPage> {
               Padding(
                 padding: EdgeInsets.only(top: 50),
               ),
-              // RaisedButton(
-              //   onPressed: ({print("object")}),
-              //   child: Text('Login'),
-              // ),
+              RaisedButton(
+                onPressed: login,
+                child: Text('Login'),
+              ),
 
               Padding(
                 padding: EdgeInsets.only(top: 50),
