@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:latihan/screens/home.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
@@ -27,7 +30,13 @@ class _LoginPageState extends State<LoginPage> {
           "password": pwdController.text
         }));
     if (response.statusCode == 200) {
-      print("berhasil");
+      final body = json.decode(response.body);
+
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        content: Text("Login berhasil"),
+      ));
+
+      authpage(body["token"]);
     } else {
       print("gagal");
     }
@@ -114,10 +123,11 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
-}
-//     save() async {
-//   await LoginPage.init();
-//   localStorage!.setString('email', emailController.text.toString());
-//   localStorage!.setString('password', pwdController.text.toString());
 
-// }
+  void authpage(String token) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+
+    await pref.setString("login", token);
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));
+  }
+}
