@@ -95,7 +95,7 @@ class MyHome extends StatelessWidget {
               if (localStorage != null)
                 Padding(
                   padding: const EdgeInsets.all(15.0),
-                  child: Text("User Logged in!!! ->  Email Id: ${localStorage.get('email')}  Password: ${localStorage.get('password')}",style: TextStyle(fontSize: 20),),
+                  child: Text("User Logged in!!! ->  Email Id: ${localStorage!.get('email')}  Password: ${localStorage!.get('password')}",style: TextStyle(fontSize: 20),),
                 ),
             ],
           ),
@@ -108,7 +108,7 @@ class MyHome extends StatelessWidget {
 
 save() async {
   await MyApp.init();
-  localStorage.setString('email', emailController.text.toString());
-  localStorage.setString('password', pwdController.text.toString());
+  localStorage!.setString('email', emailController.text.toString());
+  localStorage!.setString('password', pwdController.text.toString());
 
 }

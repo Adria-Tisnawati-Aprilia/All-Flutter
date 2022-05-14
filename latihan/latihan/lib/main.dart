@@ -110,6 +110,7 @@ class _MyAppState extends State<MyApp> {
         theme: isDark ? dark : light,
         home: Scaffold(
           appBar: AppBar(
+            centerTitle: true,
             title: Text("Counter Apps"),
             actions: [
               IconButton(icon: Icon(Icons.refresh), onPressed: refresh),
