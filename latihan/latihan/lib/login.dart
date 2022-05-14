@@ -10,17 +10,22 @@ class LoginPage extends StatefulWidget {
 }
 
 SharedPreferences? localStorage;
-TextEditingController emailController = new TextEditingController();
-TextEditingController pwdController = new TextEditingController();
 
 class _LoginPageState extends State<LoginPage> {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController pwdController = TextEditingController();
+
   static Future init() async {
     localStorage = await SharedPreferences.getInstance();
   }
 
   void login() async {
-    var response = await http.post(Uri.parse("http://localhost:8000/login"),
-        body: ({"email": emailController, "password": pwdController}));
+    var response = await http.post(
+        Uri.parse("http://192.168.167.207:8000/login"),
+        body: ({
+          "email": emailController.text,
+          "password": pwdController.text
+        }));
     if (response.statusCode == 200) {
       print("berhasil");
     } else {
@@ -92,7 +97,6 @@ class _LoginPageState extends State<LoginPage> {
                 onPressed: login,
                 child: Text('Login'),
               ),
-
               Padding(
                 padding: EdgeInsets.only(top: 50),
               ),
