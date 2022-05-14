@@ -54,4 +54,9 @@ $router->group(['prefix' => 'api'], function () use ($router) {*/
     $router->delete('event/{id}', ['uses' => 'EventController@delete']);
 
     $router->put('event/{id}', ['uses' => 'EventController@update']);
+
 });
+
+$router->post('login', ['uses' => 'LoginController@showAllLogin']);
+
+

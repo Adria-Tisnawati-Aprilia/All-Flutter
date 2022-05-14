@@ -19,9 +19,10 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var string[]
      */
     protected $fillable = [
-        'name', 'email',
+        'nama', 'email', 'token',
     ];
 
+    public $timestamps = false;
     /**
      * The attributes excluded from the model's JSON form.
      *
