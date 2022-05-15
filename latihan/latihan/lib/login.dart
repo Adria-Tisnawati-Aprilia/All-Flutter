@@ -17,6 +17,7 @@ SharedPreferences? localStorage;
 class _LoginPageState extends State<LoginPage> {
   void initState() {
     super.initState();
+    cek();
   }
 
   cek() async {
