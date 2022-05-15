@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
   cek() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
 
-    String? value = pref.getString("token");
+    String? value = pref.getString("login");
     if (value != null) {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => Home()), (route) => false);
