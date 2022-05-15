@@ -27,9 +27,6 @@ class _LoginPageState extends State<LoginPage> {
     if (value != null) {
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute(builder: (context) => Home()), (route) => false);
-    } else {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => LoginPage()));
     }
   }
 
