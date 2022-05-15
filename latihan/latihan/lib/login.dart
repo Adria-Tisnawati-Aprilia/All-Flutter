@@ -15,6 +15,19 @@ class LoginPage extends StatefulWidget {
 SharedPreferences? localStorage;
 
 class _LoginPageState extends State<LoginPage> {
+    void initState(){
+    super.initState();
+    }
+
+    cek()async{
+    SharedPreferences pref = await SharedPreferences.getInstance();
+
+    String? value = pref.getString("token");
+    if (value != null) {
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context)=> Home()), (route) => false);
+    }else{Navigator.push(context, MaterialPageRoute(builder: (context)=>LoginPage()));
+    }
+    }
   TextEditingController emailController = TextEditingController();
   TextEditingController pwdController = TextEditingController();
 
@@ -128,6 +141,6 @@ class _LoginPageState extends State<LoginPage> {
     SharedPreferences pref = await SharedPreferences.getInstance();
 
     await pref.setString("login", token);
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => Home()));
+    Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) => Home()),(route)=>false);
   }
 }
